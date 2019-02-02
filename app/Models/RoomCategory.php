@@ -16,6 +16,14 @@ class RoomCategory extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
+    public function actions()
+    {
+        return $this->hasMany(Action::class);
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
     public function rooms()
     {
         return $this->hasMany(Room::class);

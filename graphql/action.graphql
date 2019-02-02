@@ -1,4 +1,5 @@
 type Action @model {
+  category: RoomCategory! @belongsTo
   id: ID! @globalId
   name: String!
   priority: Int!

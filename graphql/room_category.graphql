@@ -1,4 +1,5 @@
 type RoomCategory @model {
+  actions: [Action!]! @hasMany(type: "connection")
   id: ID! @globalId
   name: String!
 }

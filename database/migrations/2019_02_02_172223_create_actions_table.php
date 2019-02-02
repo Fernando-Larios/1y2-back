@@ -15,6 +15,8 @@ class CreateActionsTable extends Migration
     {
         Schema::create('actions', function (Blueprint $table) {
             $table->increments('id');
+            $table->unsignedInteger('room_category_id')->nullable();
+            $table->foreign('room_category_id')->on('room_categories')->references('id')->onDelete('cascade');
             $table->string('name');
             $table->unsignedTinyInteger('priority');
             $table->unsignedSmallInteger('wait_time')->default(0);
