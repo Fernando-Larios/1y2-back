@@ -15,6 +15,8 @@ class CreateRoomsTable extends Migration
     {
         Schema::create('rooms', function (Blueprint $table) {
             $table->increments('id');
+            $table->unsignedInteger('category_id')->nullable();
+            $table->foreign('category_id')->on('room_categories')->references('id')->onDelete('cascade');
             $table->unsignedInteger('parent_id')->nullable();
             $table->foreign('parent_id')->on('rooms')->references('id')->onDelete('cascade');
             $table->boolean('available')->default(true);
