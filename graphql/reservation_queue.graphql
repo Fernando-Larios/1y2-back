@@ -1,5 +1,6 @@
 type ReservationQueue {
   id: ID! @globalId
+  priority: Int!
   room: Room! @belongsTo
   user: User! @belongsTo
 }
