@@ -17,6 +17,14 @@ class ReservationQueue extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
+    public function action()
+    {
+        return $this->belongsTo(Action::class);
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
     public function room()
     {
         return $this->belongsTo(Room::class);

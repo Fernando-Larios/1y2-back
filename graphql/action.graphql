@@ -1,0 +1,6 @@
+type Action @model {
+  id: ID! @globalId
+  name: String!
+  priority: Int!
+  waitTime: String! @rename(attribute: "wait_time")
+}

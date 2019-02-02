@@ -1,3 +1,4 @@
+#import action.graphql
 #import reservation_queue.graphql
 #import room.graphql
 #import room_category.graphql

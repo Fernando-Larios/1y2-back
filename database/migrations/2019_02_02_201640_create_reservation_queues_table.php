@@ -15,11 +15,13 @@ class CreateReservationQueuesTable extends Migration
     {
         Schema::create('reservation_queues', function (Blueprint $table) {
             $table->increments('id');
+            $table->unsignedInteger('action_id')->nullable();
+            $table->foreign('action_id')->on('actions')->references('id')->onDelete('cascade');
             $table->unsignedInteger('room_id')->nullable();
             $table->foreign('room_id')->on('rooms')->references('id')->onDelete('cascade');
             $table->unsignedInteger('user_id')->nullable();
             $table->foreign('user_id')->on('users')->references('id')->onDelete('cascade');
-            $table->unsignedTinyInteger('priority');
+            $table->enum('status', ['completed', 'in_progress', 'pending'])->default('pending');
             $table->timestamps();
         });
     }

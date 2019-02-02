@@ -1,6 +1,6 @@
 type ReservationQueue @model {
   id: ID! @globalId
-  priority: Int!
+  action: Action! @belongsTo
   room: Room! @belongsTo
   user: User! @belongsTo
 }
