@@ -29,4 +29,12 @@ class Room extends Model
     {
         return $this->belongsTo(self::class);
     }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function reservations()
+    {
+        return $this->hasMany(ReservationQueue::class);
+    }
 }
