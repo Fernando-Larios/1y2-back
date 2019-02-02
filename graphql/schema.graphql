@@ -1,0 +1,12 @@
+#import reservation_queue.graphql
+#import room.graphql
+#import room_category.graphql
+#import user.graphql
+
+type Query {
+    dummy: String
+}
+
+type Mutation {
+    dummy: String
+}

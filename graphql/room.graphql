@@ -1,0 +1,8 @@
+type Room {
+  id: ID! @globalId
+  available: Boolean!
+  category: RoomCategory! @belongsTo
+  name: String!
+  parentRoom: Room @belongsTo(relation: "parent")
+  reservations: [ReservationQueue!]! @hasMany
+}

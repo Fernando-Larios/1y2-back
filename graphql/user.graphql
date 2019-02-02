@@ -1,0 +1,7 @@
+type User {
+  id: ID! @globalId
+  email: String!
+  gender: String!
+  name: String!
+  reservations: [ReservationQueue!]! @hasMany
+}
