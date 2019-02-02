@@ -17,7 +17,8 @@ class CreateReservationQueuesTable extends Migration
             $table->increments('id');
             $table->unsignedInteger('room_id')->nullable();
             $table->foreign('room_id')->on('rooms')->references('id')->onDelete('cascade');
-            $table->morphs('reservable');
+            $table->unsignedInteger('user_id')->nullable();
+            $table->foreign('user_id')->on('users')->references('id')->onDelete('cascade');
             $table->timestamps();
         });
     }
