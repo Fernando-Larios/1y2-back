@@ -14,12 +14,12 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        $user = factory(User::class)->create();
+        $users = factory(User::class, 5)->create();
 
-        factory(Room::class, 10)->create()->each(function ($room) use ($user) {
+        factory(Room::class, 10)->create()->each(function ($room) use ($users) {
             factory(ReservationQueue::class)->create([
                 'room_id' => $room->id,
-                'user_id' => $user->id,
+                'user_id' => $users->pluck('id')->random(),
             ]);
         });
     }
