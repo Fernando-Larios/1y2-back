@@ -1,4 +1,4 @@
-type RoomCategory {
+type RoomCategory @model {
   id: ID! @globalId
   name: String!
 }

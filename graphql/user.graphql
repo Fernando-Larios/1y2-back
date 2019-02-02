@@ -1,7 +1,7 @@
-type User {
+type User @model {
   id: ID! @globalId
   email: String!
   gender: String!
   name: String!
-  reservations: [ReservationQueue!]! @hasMany
+  reservations: [ReservationQueue!]! @hasMany(type: "connection")
 }

@@ -1,4 +1,4 @@
-type ReservationQueue {
+type ReservationQueue @model {
   id: ID! @globalId
   priority: Int!
   room: Room! @belongsTo
