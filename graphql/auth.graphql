@@ -1,0 +1,44 @@
+input LoginInput {
+  username: String!
+  password: String!
+}
+
+input RefreshTokenInput {
+  refresh_token: String
+}
+
+type AuthPayload {
+  accessToken: String!  @rename(attribute: "access_token")
+  refreshToken: String!  @rename(attribute: "refresh_token")
+  expiresIn: Int!  @rename(attribute: "expires_in")
+  tokenType: String!  @rename(attribute: "token_type")
+}
+
+type LogoutResponse {
+  status: String!
+  message: String
+}
+
+type ForgotPasswordResponse {
+  status: String!
+  message: String
+}
+
+input ForgotPasswordInput {
+  email: String!
+}
+
+input NewPasswordWithCodeInput {
+  email: String!
+  token: String!
+  password: String!
+  password_confirmation: String!
+}
+
+extend type Mutation {
+  login(input: LoginInput!): AuthPayload! @field(resolver: "App\\GraphQL\\Mutations\\Auth\\Login@resolve")
+  refreshToken(input: RefreshTokenInput): AuthPayload! @field(resolver: "App\\GraphQL\\Mutations\\Auth\\RefreshToken@resolve")
+  logout: LogoutResponse! @field(resolver: "App\\GraphQL\\Mutations\\Auth\\Logout@resolve")
+  forgotPassword(input: ForgotPasswordInput!): ForgotPasswordResponse! @field(resolver: "App\\GraphQL\\Mutations\\Auth\\ForgotPassword@resolve")
+  updateForgottenPassword(input: NewPasswordWithCodeInput!): ForgotPasswordResponse! @field(resolver: "App\\GraphQL\\Mutations\\Auth\\ResetPassword@resolve")
+}
