@@ -5,3 +5,18 @@ type User @model {
   name: String!
   reservations: [ReservationQueue!]! @hasMany(type: "connection")
 }
+
+extend type Query {
+  me: User @middleware(checks: ["auth:api"]) @auth
+}
+
+input StoreUserInput {
+  email: String @rules(apply: ["required", "email"])
+  gender: String @rules(apply: ["required"])
+  name: String @rules(apply: ["required", "min:4"])
+  password: String @rules(apply: ["required", "min:4"]) @bcrypt
+}
+
+extend type Mutation {
+  storeUser(input: StoreUserInput!): User! @create(flatten: true)
+}
